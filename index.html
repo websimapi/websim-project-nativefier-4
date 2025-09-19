@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nativefier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Project App Builder</h1>
+            <p>Select one of the projects below to build a native desktop application.</p>
+        </header>
+
+        <div id="bridge-status-display" class="hidden">
+            <span>Creator Bridge:</span>
+            <span id="bridge-status-indicator" class="disconnected"></span>
+            <span id="bridge-status-text">Disconnected</span>
+        </div>
+
+        <main>
+            <div id="creator-panel" class="hidden">
+                <h2>Creator Bridge</h2>
+                <div class="bridge-card">
+                    <p>To enable app building for your users, download and run the Node.js bridge on your computer.</p>
+                    <ol>
+                        <li>Download the bridge server files.</li>
+                        <li>Extract the .zip file.</li>
+                        <li>Open a terminal in the extracted folder.</li>
+                        <li>Run <code>npm install</code> to install dependencies.</li>
+                        <li>Run <code>npm start</code> to start the bridge.</li>
+                    </ol>
+                    <button id="download-bridge-btn">Download Bridge Server (.zip)</button>
+                </div>
+            </div>
+
+            <h2>Available Projects</h2>
+            <div id="project-list-container">
+                <div id="project-list"></div>
+                <div id="loading" class="hidden">Loading projects...</div>
+                <div id="error" class="hidden"></div>
+            </div>
+
+            <div id="manual-build-panel">
+                <h2>Build your Application</h2>
+                <div class="project-card">
+                    <p>Enter a URL to build a native desktop application from any website.</p>
+                    <input type="url" id="manual-url" placeholder="https://label--username.on.websim.com or https://example.com">
+                    <div class="project-actions">
+                         <select id="manual-platform">
+                            <option value="windows">Windows (x64)</option>
+                            <option value="mac">macOS (Intel x64)</option>
+                            <option value="linux">Linux (x64)</option>
+                        </select>
+                        <button id="manual-build-btn">Build App</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="status-panel" class="hidden">
+                <h3>Build Status</h3>
+                <p id="status-message"></p>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="download-link-container" class="hidden">
+                     <a id="download-link" href="#" download>Download Your App</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "main": "./main.js",
+        "bridge-generator": "./bridge-generator.js"
+      }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
